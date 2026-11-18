@@ -1,6 +1,9 @@
+// Para adicionar a foto de um cantor, preencha o campo foto (ex.: foto: "assets/markim.jpg").
+
 const cantores = [
-{
+  {
     n: "M4rkim",
+    id: "m4rkim",
     foto: "assets/m4rkim.jpg",
     tag: "Rap · Rock",
     estilo:
@@ -10,6 +13,7 @@ const cantores = [
   },
   {
     n: "Enygma",
+    id: "enygma",
     foto: "assets/enygma.jpg",
     tag: "Metal · Rock",
     estilo:
@@ -19,24 +23,27 @@ const cantores = [
   },
   {
     n: "Anny",
+    id: "anny",
     foto: "assets/anny.jpg",
     tag: "Pop",
     estilo:
       "Anny é uma artista da música geek brasileira, com faixas como Blue ou Parabellum.",
     metodo:
-      "Não possui um tipo próprio, porém visa trazer músicas mais subjetivas ao invés de contar a história do personagem"
+      "Possui um tipo próprio, porém visa trazer músicas mais subjetivas ao invés de contar a história do personagem"
   },
   {
     n: "AniRap",
+    id: "anirap",
     foto: "assets/anirap.jpg",
     tag: "Rap · Trap",
     estilo:
       "Rap geek com bateria de trap, muitas referências de animes e refrões melódicos. É conhecido por criar o grupo URT.",
     metodo:
-      "Refrões pensados para o público cantar junto, em faixas centradas em personagens.",
+      "Refrões pensados para o público cantar junto, em faixas centradas em um personagem.",
   },
   {
     n: "MHRAP",
+    id: "mhrap",
     foto: "assets/mhrap.jpg",
     tag: "Rap · Trap",
     estilo:
@@ -46,41 +53,56 @@ const cantores = [
   },
   {
     n: "7 Minutoz",
+    id: "7-minutoz",
     foto: "assets/7mz.jpg",
     tag: "Grupo · Rap",
     estilo:
-      "Grupo no ar desde 2012 e uma das maiores referências do rap geek brasileiro. Possuindo atualmente a musica geek com mais views no youtube.",
+      "Grupo no ar desde 2012 e uma das maiores referências do rap geek brasileiro. As faixas mais famosas homenageiam Naruto, One Piece e Dragon Ball.",
     metodo:
       "Raps em equipe, com vários artistas na mesma música, e vídeos com forte identidade de anime.",
   },
   {
     n: "Blxck",
+    id: "blxck",
     foto: "assets/blxck.jpg",
     tag: "Trap",
     estilo:
     "Canal recentemente criado, porém já é condecorado um dos melhores da cena, tendo crescido muito nos últimos meses com sons como Anoitecer Cruel",
-    metodo: 
-    "Musicas dedicadas a personagens com um grande ênfase no story-telling e um forte foco em 'flows'",
   },
   {
-    n: "SlowGM",
+   n: "SlowGm",
+    id: "SlowGm",
     foto: "assets/slowgm.jpg",
     tag: "Pop",
     estilo:
-      "SlowGm é um artista que visa trazer visões mais interpretátivas de obras menos famosas como jogos indies, por exemplo: Moutwash ou Little Missfortune.",
-    metodo:
-      "Não possui um tipo próprio, porém visa trazer músicas mais subjetivas ao invés de contar a história do personagem"
+    "",
   },
   {
-    n: "oShaman",
+   n: "Oshaman",
+    id: "Oshaman",
     foto: "assets/oshaman.jpg",
     tag: "Pop · Bossa Nova",
     estilo:
-      "oShaman é um artista que busca menos story-telling e mais a essência da obra retratando muitas musicas em estilos com raizes fortes brasileiras",
-    metodo:
-      "Mais focado em cantar com uma voz limpa e um instrumental que guia o ritmo da musica"
+    "Traz musicas com maior foco em instrumental e uma voz limpa, sempre trazendo consigo um pouco de uma raiz brasileira em suas musicas",
+    metodo: 
+    "Suas musicas são mais interpretativas à contar a história de um personagem, o que traz para si um público que não necessariamente precisa ter consumido a obra para apreciar",
   },
 ];
+
+function criarAvatar(c, grande) {
+  const inicial = document.createElement("div");
+  inicial.className = "avatar avatar-inicial" + (grande ? " avatar-grande" : "");
+  inicial.textContent = c.n.charAt(0).toUpperCase();
+  if (!c.foto) return inicial;
+
+  const img = document.createElement("img");
+  img.className = "avatar" + (grande ? " avatar-grande" : "");
+  img.src = c.foto;
+  img.alt = "Foto de perfil de " + c.n;
+  img.loading = "lazy";
+  img.addEventListener("error", () => img.replaceWith(inicial));
+  return img;
+}
 
 const lista = document.getElementById("lista");
 const busca = document.getElementById("busca");
@@ -91,21 +113,6 @@ function normalizar(t) {
     .toLowerCase()
     .normalize("NFD")
     .replace(/[\u0300-\u036f]/g, "");
-}
-
-function criarAvatar(c) {
-  const inicial = document.createElement("div");
-  inicial.className = "avatar avatar-inicial";
-  inicial.textContent = c.n.charAt(0).toUpperCase();
-  if (!c.foto) return inicial;
-
-  const img = document.createElement("img");
-  img.className = "avatar";
-  img.src = c.foto;
-  img.alt = "Foto de perfil de " + c.n;
-  img.loading = "lazy";
-  img.addEventListener("error", () => img.replaceWith(inicial));
-  return img;
 }
 
 function render(termo) {
@@ -135,9 +142,9 @@ function render(termo) {
       "<h4>Como canta</h4><p>" +
       c.metodo +
       "</p>" +
-      '<a class="yt" target="_blank" rel="noopener" href="https://www.youtube.com/results?search_query=' +
-      encodeURIComponent(c.n) +
-      '">Procurar no YouTube ↗</a>';
+      '<a class="btn btn-sm" href="#cantor-' +
+      encodeURIComponent(c.id) +
+      '">Ver mais a fundo</a>';
 
     card.appendChild(topo);
     card.appendChild(corpo);
@@ -155,3 +162,64 @@ document.getElementById("sortear").addEventListener("click", () => {
 });
 
 render("");
+
+
+const inicio = document.getElementById("inicio");
+const telaCantor = document.getElementById("tela-cantor");
+const detalhe = document.getElementById("detalhe");
+const tituloPadrao = document.title;
+
+function mostrarInicio() {
+  telaCantor.hidden = true;
+  inicio.hidden = false;
+  document.title = tituloPadrao;
+}
+
+function mostrarCantor(id) {
+  const c = cantores.find((x) => x.id === id);
+  if (!c) {
+    location.hash = "#cantores";
+    return;
+  }
+  document.title = c.n + " – Rap Geek";
+  detalhe.innerHTML = "";
+
+  const topo = document.createElement("div");
+  topo.className = "detalhe-topo";
+  topo.appendChild(criarAvatar(c, true));
+
+  const titulo = document.createElement("div");
+  titulo.innerHTML = '<span class="tag">' + c.tag + "</span><h1>" + c.n + "</h1>";
+  topo.appendChild(titulo);
+
+  const blocos = document.createElement("div");
+  blocos.innerHTML =
+    '<div class="card"><h3>Estilo</h3><p>' + c.estilo + "</p></div>" +
+    '<div class="card"><h3>Como canta</h3><p>' + c.metodo + "</p></div>" +
+    '<div class="acoes">' +
+    '<a class="btn" href="#cantores">← Voltar</a> ' +
+    '<a class="btn btn-sec" target="_blank" rel="noopener" href="https://www.youtube.com/results?search_query=' +
+    encodeURIComponent(c.n) +
+    '">Procurar no YouTube ↗</a></div>';
+
+  detalhe.appendChild(topo);
+  detalhe.appendChild(blocos);
+
+  inicio.hidden = true;
+  telaCantor.hidden = false;
+  window.scrollTo(0, 0);
+}
+
+function rotear() {
+  const h = location.hash;
+  if (h.startsWith("#cantor-")) {
+    mostrarCantor(decodeURIComponent(h.slice(8)));
+    return;
+  }
+  mostrarInicio();
+  const alvo = h.length > 1 ? document.getElementById(h.slice(1)) : null;
+  if (alvo) alvo.scrollIntoView();
+}
+
+window.addEventListener("hashchange", rotear);
+rotear();
