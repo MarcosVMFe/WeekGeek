@@ -199,3 +199,64 @@ footer {
   color: var(--muted);
   font-size: 0.9rem;
 }
+
+#busca {
+  width: 100%;
+  background: var(--surface);
+  color: var(--text);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 0.9rem 1.1rem;
+  font-size: 1.05rem;
+  font-family: inherit;
+  margin-bottom: 1.2rem;
+}
+#busca:focus {
+  outline: 2px solid var(--accent);
+  border-color: var(--accent);
+}
+.card h4 {
+  margin: 0.8rem 0 0.2rem;
+  color: var(--accent2);
+  font-family: Impact, "Arial Narrow Bold", Arial, sans-serif;
+  letter-spacing: 0.04em;
+  font-size: 0.95rem;
+  text-transform: uppercase;
+  font-weight: normal;
+}
+.vazio {
+  color: var(--muted);
+  text-align: center;
+}
+
+.topo {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 0.4rem;
+}
+.topo h3 {
+  margin: 0;
+}
+.avatar {
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid var(--accent);
+  flex-shrink: 0;
+  background: var(--surface2);
+}
+.avatar-inicial {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--accent2);
+  font-family: Impact, "Arial Narrow Bold", Arial, sans-serif;
+  font-size: 2rem;
+}
+.yt {
+  display: inline-block;
+  margin-top: 0.9rem;
+  font-size: 0.9rem;
+}
