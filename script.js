@@ -1,7 +1,7 @@
 const cantores = [
-  {
+{
     n: "M4rkim",
-    foto: "",
+    foto: "assets/m4rkim.jpg",
     tag: "Rap nerd · Geek music",
     estilo:
       "Rap nerd e geek music, com influências de rock e metal alternativo. Faz faixas sobre personagens de animes e games, como Blue Lock, Bleach, Jujutsu Kaisen e God of War.",
@@ -10,7 +10,7 @@ const cantores = [
   },
   {
     n: "Enygma",
-    foto: "",
+    foto: "assets/enygma.jpg",
     tag: "Anime metal",
     estilo:
       "Conhecido por inovar na cena geek com o chamado “anime metal”, que une a energia do metal a temas de animes.",
@@ -19,7 +19,7 @@ const cantores = [
   },
   {
     n: "Anny",
-    foto: "",
+    foto: "assets/anny.jpg",
     tag: "Música geek",
     estilo:
       "Anny é uma artista da música geek brasileira, com faixas como Blue ou Parabellum.",
@@ -28,7 +28,7 @@ const cantores = [
   },
   {
     n: "AniRap",
-    foto: "",
+    foto: "assets/anirap.jpg",
     tag: "Rap · Trap",
     estilo:
       "Rap geek com bateria de trap, muitas referências de animes e refrões melódicos. É conhecido por criar o grupo URT.",
@@ -37,7 +37,7 @@ const cantores = [
   },
   {
     n: "MHRAP",
-    foto: "",
+    foto: "assets/mhrap.jpg",
     tag: "Rap geek · Trap",
     estilo:
       "Considerado um dos principais nomes solo do rap geek no país, inspirado na trajetória do 7 Minutoz.",
@@ -46,7 +46,7 @@ const cantores = [
   },
   {
     n: "7 Minutoz",
-    foto: "",
+    foto: "assets/7mz.jpg",
     tag: "Grupo · Rap geek",
     estilo:
       "Grupo no ar desde 2012 e uma das maiores referências do rap geek brasileiro. As faixas mais famosas homenageiam Naruto, One Piece e Dragon Ball.",
@@ -55,7 +55,7 @@ const cantores = [
   },
   {
     n: "Blxck",
-    foto: "",
+    foto: "assets/blxck.jpg",
     tag: "Trap",
     estilo:
     "Canal recentemente criado, porém já é condecorado um dos melhores da cena, tendo crescido muito nos últimos meses com sons como Anoitecer Cruel",
