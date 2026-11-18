@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Rap Geek – A cena dos raps de anime</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="top">
+  <nav>
+    <a href="#o-que-e">O que é</a>
+    <a href="#caracteristicas">Características</a>
+    <a href="#animes">Animes</a>
+    <a href="#sugestao-sec">Sugestão</a>
+    <a href="#faq">Dúvidas</a>
+  </nav>
+</header>
+
+<div class="hero">
+  <h1>Rap Geek</h1>
+  <p>Rimas, batidas e muito fandom: conheça a cena geek e descubra por que ela conquistou tanta gente.</p>
+  <a class="btn" href="#o-que-e">Explorar a cena</a>
+</div>
+
+<main>
+  <section id="o-que-e">
+    <h2>O que é rap de anime?</h2>
+    <p>É um estilo de música feito por fãs, em que as letras contam a história, os sentimentos e os conflitos de personagens de animes, mangás e games. Cada faixa funciona como uma homenagem: o artista mergulha no personagem e transforma a trajetória dele em versos.</p>
+    <p>No Brasil, a cena ganhou força na internet, principalmente em canais de vídeo e plataformas de música. Nomes como o canal <strong>7 Minutoz</strong> e o artista <strong>Tauz</strong> estão entre as referências citadas por muitos fãs.</p>
+  </section>
+
+  <section id="caracteristicas">
+    <h2>O que torna a cena especial</h2>
+    <div class="grid">
+      <div class="card"><h3>Narrativa</h3><p>As letras resumem arcos inteiros da obra, com referências que só quem acompanhou a história percebe.</p></div>
+      <div class="card"><h3>Comunidade</h3><p>Fãs comentam, analisam versos, sugerem personagens e participam do processo criativo.</p></div>
+      <div class="card"><h3>Produção</h3><p>Instrumentais, mixagem e clipes animados mostram que muita gente leva o hobby a sério.</p></div>
+      <div class="card"><h3>Paixão</h3><p>Mais do que fama, a cena vive do amor pelas obras e do desejo de homenageá-las.</p></div>
+    </div>
+  </section>
+
+  <section id="animes">
+    <h2>Animes que viram rap</h2>
+    <div class="filters" id="filtros">
+      <button class="on" data-f="todos">Todos</button>
+      <button data-f="shonen">Shonen</button>
+      <button data-f="sombrio">Sombrio</button>
+      <button data-f="aventura">Aventura</button>
+    </div>
+    <div class="grid" id="lista"></div>
+  </section>
+
+  <section id="sugestao-sec">
+    <h2>Sem ideia do que ouvir?</h2>
+    <div class="picker">
+      <p>Clique no botão e receba uma sugestão de tema para procurar um rap.</p>
+      <div id="sugestao">🔥</div>
+      <button class="btn" id="sortear">Sortear tema</button>
+    </div>
+  </section>
+
+  <section id="faq">
+    <h2>Dúvidas frequentes</h2>
+    <details><summary>Preciso conhecer o anime para curtir?</summary><p>Não. Muita gente descobre um anime justamente por causa do rap. Mas conhecer a obra deixa as referências muito mais divertidas.</p></details>
+    <details><summary>Onde posso ouvir?</summary><p>Em plataformas de vídeo e de streaming de música. Pesquise pelo nome do personagem junto com “rap”.</p></details>
+  </section>
+</main>
+
+<footer>Feito por fãs, para fãs. Site informativo sem fins lucrativos.</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
