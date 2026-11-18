@@ -2,7 +2,7 @@ const cantores = [
 {
     n: "M4rkim",
     foto: "assets/m4rkim.jpg",
-    tag: "Rap nerd · Geek music",
+    tag: "Rap · Rock",
     estilo:
       "Rap nerd e geek music, com influências de rock e metal alternativo. Faz faixas sobre personagens de animes e games, como Blue Lock, Bleach, Jujutsu Kaisen e God of War.",
     metodo:
@@ -11,7 +11,7 @@ const cantores = [
   {
     n: "Enygma",
     foto: "assets/enygma.jpg",
-    tag: "Anime metal",
+    tag: "Metal · Rock",
     estilo:
       "Conhecido por inovar na cena geek com o chamado “anime metal”, que une a energia do metal a temas de animes.",
     metodo:
@@ -20,7 +20,7 @@ const cantores = [
   {
     n: "Anny",
     foto: "assets/anny.jpg",
-    tag: "Música geek",
+    tag: "Pop",
     estilo:
       "Anny é uma artista da música geek brasileira, com faixas como Blue ou Parabellum.",
     metodo:
@@ -33,12 +33,12 @@ const cantores = [
     estilo:
       "Rap geek com bateria de trap, muitas referências de animes e refrões melódicos. É conhecido por criar o grupo URT.",
     metodo:
-      "Refrões pensados para o público cantar junto, em faixas centradas em um personagem.",
+      "Refrões pensados para o público cantar junto, em faixas centradas em personagens.",
   },
   {
     n: "MHRAP",
     foto: "assets/mhrap.jpg",
-    tag: "Rap geek · Trap",
+    tag: "Rap · Trap",
     estilo:
       "Considerado um dos principais nomes solo do rap geek no país, inspirado na trajetória do 7 Minutoz.",
     metodo:
@@ -47,9 +47,9 @@ const cantores = [
   {
     n: "7 Minutoz",
     foto: "assets/7mz.jpg",
-    tag: "Grupo · Rap geek",
+    tag: "Grupo · Rap",
     estilo:
-      "Grupo no ar desde 2012 e uma das maiores referências do rap geek brasileiro. As faixas mais famosas homenageiam Naruto, One Piece e Dragon Ball.",
+      "Grupo no ar desde 2012 e uma das maiores referências do rap geek brasileiro. Possuindo atualmente a musica geek com mais views no youtube.",
     metodo:
       "Raps em equipe, com vários artistas na mesma música, e vídeos com forte identidade de anime.",
   },
@@ -61,6 +61,24 @@ const cantores = [
     "Canal recentemente criado, porém já é condecorado um dos melhores da cena, tendo crescido muito nos últimos meses com sons como Anoitecer Cruel",
     metodo: 
     "Musicas dedicadas a personagens com um grande ênfase no story-telling e um forte foco em 'flows'",
+  },
+  {
+    n: "SlowGM",
+    foto: "assets/slowgm.jpg",
+    tag: "Pop",
+    estilo:
+      "SlowGm é um artista que visa trazer visões mais interpretátivas de obras menos famosas como jogos indies, por exemplo: Moutwash ou Little Missfortune.",
+    metodo:
+      "Não possui um tipo próprio, porém visa trazer músicas mais subjetivas ao invés de contar a história do personagem"
+  },
+  {
+    n: "oShaman",
+    foto: "assets/oshaman.jpg",
+    tag: "Pop · Bossa Nova",
+    estilo:
+      "oShaman é um artista que busca menos story-telling e mais a essência da obra retratando muitas musicas em estilos com raizes fortes brasileiras",
+    metodo:
+      "Mais focado em cantar com uma voz limpa e um instrumental que guia o ritmo da musica"
   },
 ];
 
