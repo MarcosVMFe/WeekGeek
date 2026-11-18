@@ -11,23 +11,23 @@
   <nav>
     <a href="#o-que-e">O que é</a>
     <a href="#caracteristicas">Características</a>
-    <a href="#animes">Animes</a>
-    <a href="#sugestao-sec">Sugestão</a>
+    <a href="#cantores">Cantores</a>
+    <a href="#sugestao-sec">Sorteio</a>
     <a href="#faq">Dúvidas</a>
   </nav>
 </header>
 
 <div class="hero">
   <h1>Rap Geek</h1>
-  <p>Rimas, batidas e muito fandom: conheça a cena geek e descubra por que ela conquistou tanta gente.</p>
+  <p>Rimas, batidas e muito fandom: conheça a cena dos raps de anime e descubra por que ela conquistou tanta gente.</p>
   <a class="btn" href="#o-que-e">Explorar a cena</a>
 </div>
 
 <main>
   <section id="o-que-e">
-    <h2>O que é rap de anime?</h2>
+    <h2>O que é o "rap de anime"?</h2>
     <p>É um estilo de música feito por fãs, em que as letras contam a história, os sentimentos e os conflitos de personagens de animes, mangás e games. Cada faixa funciona como uma homenagem: o artista mergulha no personagem e transforma a trajetória dele em versos.</p>
-    <p>No Brasil, a cena ganhou força na internet, principalmente em canais de vídeo e plataformas de música. Nomes como o canal <strong>7 Minutoz</strong> e o artista <strong>Tauz</strong> estão entre as referências citadas por muitos fãs.</p>
+    <p>No Brasil, a cena ganhou força na internet, principalmente em canais de vídeo e plataformas de música. Grupos e artistas como o <strong>7 Minutoz</strong> e o <strong>MHRAP</strong> estão entre as maiores referências da cena.</p>
   </section>
 
   <section id="caracteristicas">
@@ -40,23 +40,19 @@
     </div>
   </section>
 
-  <section id="animes">
-    <h2>Animes que viram rap</h2>
-    <div class="filters" id="filtros">
-      <button class="on" data-f="todos">Todos</button>
-      <button data-f="shonen">Shonen</button>
-      <button data-f="sombrio">Sombrio</button>
-      <button data-f="aventura">Aventura</button>
-    </div>
+  <section id="cantores">
+    <h2>Procure um cantor</h2>
+    <input type="search" id="busca" placeholder="Digite um nome ou estilo (ex.: M4rkim, metal, trap)" aria-label="Buscar cantor">
     <div class="grid" id="lista"></div>
+    <p id="vazio" class="vazio" hidden>Nenhum cantor encontrado. Tente outro nome ou estilo.</p>
   </section>
 
   <section id="sugestao-sec">
-    <h2>Sem ideia do que ouvir?</h2>
+    <h2>Sem ideia de quem ouvir?</h2>
     <div class="picker">
-      <p>Clique no botão e receba uma sugestão de tema para procurar um rap.</p>
+      <p>Clique no botão e descubra um cantor para ouvir agora.</p>
       <div id="sugestao">🔥</div>
-      <button class="btn" id="sortear">Sortear tema</button>
+      <button class="btn" id="sortear">Sortear cantor</button>
     </div>
   </section>
 
