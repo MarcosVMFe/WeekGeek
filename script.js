@@ -139,9 +139,6 @@ function render(termo) {
       "<h4>Estilo</h4><p>" +
       c.estilo +
       "</p>" +
-      "<h4>Como canta</h4><p>" +
-      c.metodo +
-      "</p>" +
       '<a class="btn btn-sm" href="#cantor-' +
       encodeURIComponent(c.id) +
       '">Ver mais a fundo</a>';
@@ -195,7 +192,6 @@ function mostrarCantor(id) {
   const blocos = document.createElement("div");
   blocos.innerHTML =
     '<div class="card"><h3>Estilo</h3><p>' + c.estilo + "</p></div>" +
-    '<div class="card"><h3>Como canta</h3><p>' + c.metodo + "</p></div>" +
     '<div class="acoes">' +
     '<a class="btn" href="#cantores">← Voltar</a> ' +
     '<a class="btn btn-sec" target="_blank" rel="noopener" href="https://www.youtube.com/results?search_query=' +
