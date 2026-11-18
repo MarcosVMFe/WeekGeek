@@ -55,7 +55,7 @@ const cantores = [
     n: "7 Minutoz",
     id: "7-minutoz",
     foto: "assets/7mz.jpg",
-    tag: "Grupo · Rap",
+    tag: "Rap",
     estilo:
       "Grupo no ar desde 2012 e uma das maiores referências do rap geek brasileiro. As faixas mais famosas homenageiam Naruto, One Piece e Dragon Ball.",
     metodo:
