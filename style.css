@@ -309,3 +309,16 @@ footer {
   gap: 0.8rem;
   flex-wrap: wrap;
 }
+
+.foto-show {
+  margin: 1.5rem 0 0;
+}
+.foto-show img {
+  display: block;
+  width: 100%;
+  max-width: 560px;
+  height: auto;
+  margin: 0 auto;
+  border: 2px solid var(--accent);
+  border-radius: 8px;
+}
