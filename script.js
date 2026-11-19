@@ -198,7 +198,7 @@ const telaCantor = document.getElementById("tela-cantor");
 const detalhe = document.getElementById("detalhe");
 const tituloPadrao = document.title;
 
-// ---------- Ranking de músicas (o visitante define a ordem) ----------
+
 function chaveRanking(c) {
   return "ranking-" + c.id;
 }
@@ -210,7 +210,7 @@ function lerRanking(c) {
     const bruto = JSON.parse(localStorage.getItem(chaveRanking(c)));
     if (Array.isArray(bruto)) salvo = bruto;
   } catch (e) {}
-  // mantém a ordem salva e coloca músicas novas no fim
+
   const validas = salvo.filter((m) => musicas.includes(m));
   const novas = musicas.filter((m) => !validas.includes(m));
   return validas.concat(novas);
