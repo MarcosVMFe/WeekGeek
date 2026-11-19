@@ -53,7 +53,7 @@ const cantores = [
     foto: "assets/blxck.jpg",
     tag: "Trap",
     estilo:
-    "Canal recentemente criado, porém já é condecorado um dos melhores da cena, tendo crescido muito nos últimos meses com sons como Anoitecer Cruel",
+    "Canal recentemente criado, porém já é condecorado um dos melhores da cena, tendo crescido muito nos últimos meses com sons como Anoitecer Cruel.",
   },
   {
    n: "SlowGm",
@@ -61,7 +61,7 @@ const cantores = [
     foto: "assets/slowgm.jpg",
     tag: "Pop",
     estilo:
-    "",
+    "Faz musicas com muita inspiração no pop, assim como muitos ele não fala diretamente sobre a obra que está retrantando, apenas passando sentimentos e referências a mesma.",
   },
   {
    n: "Oshaman",
@@ -69,7 +69,7 @@ const cantores = [
     foto: "assets/oshaman.jpg",
     tag: "Pop · Bossa Nova",
     estilo:
-    "Traz musicas com maior foco em instrumental e uma voz limpa, sempre trazendo consigo um pouco de uma raiz brasileira em suas musicas",
+    "Traz musicas com maior foco em instrumental e uma voz limpa, sempre trazendo consigo um pouco de uma raiz brasileira em suas musicas.",
   },
 ];
 
