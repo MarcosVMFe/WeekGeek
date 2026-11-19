@@ -71,6 +71,30 @@ const cantores = [
     estilo:
     "Traz musicas com maior foco em instrumental e uma voz limpa, sempre trazendo consigo um pouco de uma raiz brasileira em suas musicas.",
   },
+  {
+   n: "HalCG",
+    id: "halacg",
+    foto: "assets/halacg.jpg",
+    tag: "Rock · Pop",
+    estilo:
+    "Faz musicas majoritariamente sobre o jogo 'Honkai: Star Rail', chegando até a fazer parcerias oficiais com a empresa, sempre busca representar o personagem escolhido no estilo da musica.",
+  },
+  {
+   n: "Chrono",
+    id: "chrono",
+    foto: "assets/chrono.jpg",
+    tag: "Pop · Rap",
+    estilo:
+    "Faz musicas com um ênfase bem forte na história dos personagens, busca também trazer diferentes estilos musicais em suas musicas.",
+  },
+  {
+   n: "Novatroop",
+    id: "novatroop",
+    foto: "assets/novatroop.jpg",
+    tag: "Pop",
+    estilo:
+    "Faz musicas quase que alheias aos temas escolhidos usando-os apenas como base para a escrita da letra, recentemente tem testado vários estilos de musicas diferentes.",
+  },
 ];
 
 function criarAvatar(c, grande) {
