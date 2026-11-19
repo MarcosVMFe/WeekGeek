@@ -1,5 +1,3 @@
-// Para adicionar a foto de um cantor, preencha o campo foto (ex.: foto: "assets/markim.jpg").
-
 const cantores = [
   {
     n: "M4rkim",
@@ -8,9 +6,7 @@ const cantores = [
     tag: "Rap · Rock",
     estilo:
       "Rap nerd e geek music, com influências de rock e metal alternativo. Faz faixas sobre personagens de animes e games, como Blue Lock, Bleach, Jujutsu Kaisen e God of War.",
-    metodo:
-      "Letras que contam a história do personagem, com batidas pesadas e muitas parcerias com outros nomes da cena, como Kaito Rapper e MHRAP.",
-  },
+    },
   {
     n: "Enygma",
     id: "enygma",
@@ -18,8 +14,6 @@ const cantores = [
     tag: "Metal · Rock",
     estilo:
       "Conhecido por inovar na cena geek com o chamado “anime metal”, que une a energia do metal a temas de animes.",
-    metodo:
-      "Guitarras pesadas e vocais intensos no lugar da batida clássica do rap, em homenagens a obras e personagens.",
   },
   {
     n: "Anny",
@@ -28,9 +22,7 @@ const cantores = [
     tag: "Pop",
     estilo:
       "Anny é uma artista da música geek brasileira, com faixas como Blue ou Parabellum.",
-    metodo:
-      "Possui um tipo próprio, porém visa trazer músicas mais subjetivas ao invés de contar a história do personagem"
-  },
+    },
   {
     n: "AniRap",
     id: "anirap",
@@ -38,9 +30,7 @@ const cantores = [
     tag: "Rap · Trap",
     estilo:
       "Rap geek com bateria de trap, muitas referências de animes e refrões melódicos. É conhecido por criar o grupo URT.",
-    metodo:
-      "Refrões pensados para o público cantar junto, em faixas centradas em um personagem.",
-  },
+    },
   {
     n: "MHRAP",
     id: "mhrap",
@@ -48,8 +38,6 @@ const cantores = [
     tag: "Rap · Trap",
     estilo:
       "Considerado um dos principais nomes solo do rap geek no país, inspirado na trajetória do 7 Minutoz.",
-    metodo:
-      "Raps dedicados a animes e personagens, foi o primeiro a trazer o estilo de Trap para o mundo geek com músicas inspiradas em personagens.",
   },
   {
     n: "7 Minutoz",
@@ -58,8 +46,6 @@ const cantores = [
     tag: "Rap",
     estilo:
       "Grupo no ar desde 2012 e uma das maiores referências do rap geek brasileiro. As faixas mais famosas homenageiam Naruto, One Piece e Dragon Ball.",
-    metodo:
-      "Raps em equipe, com vários artistas na mesma música, e vídeos com forte identidade de anime.",
   },
   {
     n: "Blxck",
@@ -84,8 +70,6 @@ const cantores = [
     tag: "Pop · Bossa Nova",
     estilo:
     "Traz musicas com maior foco em instrumental e uma voz limpa, sempre trazendo consigo um pouco de uma raiz brasileira em suas musicas",
-    metodo: 
-    "Suas musicas são mais interpretativas à contar a história de um personagem, o que traz para si um público que não necessariamente precisa ter consumido a obra para apreciar",
   },
 ];
 
