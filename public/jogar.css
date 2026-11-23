@@ -1,0 +1,537 @@
+/* =========================================
+   RAP GEEK | jogar.css
+   Estilo da página do jogo "Adivinhe a música".
+   Depende do style.css do site: usa as mesmas cores (variáveis --bg,
+   --surface, --accent...) e as mesmas fontes. Carregue o style.css ANTES.
+========================================= */
+
+.pagina-jogar {
+  --ok: #4caf7a;            /* acerto (verde) */
+  --ok-fundo: rgba(76, 175, 122, 0.18);
+  --erro-fundo: rgba(214, 40, 40, 0.22);
+}
+
+.pagina-jogar [hidden] {
+  display: none !important;
+}
+
+/* ---------- 1. Banner (sem imagem: só gradiente, como o topo do site) ---------- */
+
+.banner-jogo {
+  padding: 2.5rem 1rem 2rem;
+  margin: 0 -1.2rem;        /* ocupa a largura toda, mesmo dentro do <main> */
+  text-align: center;
+  background: radial-gradient(ellipse at 50% 0%, #5c1f0a 0%, transparent 70%);
+}
+
+.banner-jogo h1 {
+  margin: 0;
+  font-size: clamp(2.4rem, 8vw, 4.5rem);
+  line-height: 1;
+  text-transform: uppercase;
+  background: linear-gradient(90deg, var(--accent2), var(--accent), var(--red));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.banner-jogo p {
+  max-width: 560px;
+  margin: 0.8rem auto 0;
+  color: var(--muted);
+}
+
+/* ---------- 2. Card principal ---------- */
+
+.area-jogo {
+  display: flex;
+  flex-direction: column;
+  gap: 1.3rem;
+  padding: 1.5rem;
+  margin-top: 1.5rem;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+}
+
+/* ---------- 3. Cabeçalho: capa, artista e dica ---------- */
+
+.jogo-cabecalho {
+  display: grid;
+  grid-template-columns: 190px minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 1.2rem;
+}
+
+.capa-misterio {
+  width: 190px;
+  height: 190px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  background: var(--surface2);
+  border: 2px solid var(--accent);
+  border-radius: 8px;
+}
+
+.capa-misterio span {
+  font-family: Impact, "Arial Narrow Bold", Arial, sans-serif;
+  font-size: 5.5rem;
+  line-height: 1;
+  color: var(--accent2);
+}
+
+.capa-misterio img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.informacoes-misterio {
+  min-width: 0;
+}
+
+.informacoes-misterio h2 {
+  margin: 0;
+  font-size: clamp(1.3rem, 3.2vw, 2rem);
+  overflow-wrap: anywhere;
+}
+
+.informacoes-misterio h2 span {
+  color: var(--text);
+}
+
+.informacoes-misterio p {
+  margin: 0.8rem 0 0;
+  color: var(--muted);
+  font-size: 1.05rem;
+}
+
+.informacoes-misterio p span {
+  color: var(--text);
+}
+
+/* ---------- 4. Botão de dica / desistir ---------- */
+
+.botao-dica {
+  min-width: 170px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.6rem 1rem;
+  font-size: 1rem;
+  text-transform: uppercase;
+  cursor: pointer;
+  color: var(--accent2);
+  background: var(--surface2);
+  border: 1px solid var(--accent);
+  border-radius: 4px;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+
+.botao-dica:hover:not(:disabled) {
+  background: var(--accent);
+  color: #1a0a03;
+}
+
+.icone-dica {
+  font-size: 1.3rem;
+  line-height: 1;
+}
+
+.botao-dica.desistir {
+  color: #fff;
+  background: var(--red);
+  border-color: var(--red);
+}
+
+.botao-dica.desistir:hover:not(:disabled) {
+  background: #b01f1f;
+  color: #fff;
+}
+
+/* ---------- 5. Player ---------- */
+
+.player-musica {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.controles-player {
+  display: flex;
+  align-items: flex-end;
+  gap: 0.8rem;
+}
+
+.botao-play {
+  width: 44px;
+  height: 44px;
+  flex-shrink: 0;
+  padding: 0;
+  font-size: 1.1rem;
+  line-height: 1;
+  color: #1a0a03;
+  background: var(--accent);
+  border: 0;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: transform 0.2s ease, background 0.2s ease;
+}
+
+.botao-play:hover:not(:disabled) {
+  background: var(--accent2);
+  transform: scale(1.08);
+}
+
+.linha-tempo {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+/* 5 rótulos, um por etapa, alinhados ao FIM de cada trecho */
+.marcadores-tempo {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  font-family: Impact, "Arial Narrow Bold", Arial, sans-serif;
+  letter-spacing: 0.04em;
+  font-size: 0.85rem;
+  color: var(--muted);
+}
+
+.marcadores-tempo span {
+  padding-right: 6px;
+  text-align: right;
+  opacity: 0.45;                     /* bloqueado */
+  transition: opacity 0.2s ease, color 0.2s ease;
+}
+
+.marcadores-tempo span.liberada {
+  opacity: 1;
+  color: var(--accent2);
+}
+
+/* a barra só MOSTRA o progresso (não dá para arrastar) */
+.barra-wrapper {
+  position: relative;
+}
+
+#barraAudio {
+  display: block;
+  width: 100%;
+  height: 22px;
+  margin: 0;
+  padding: 0;
+  pointer-events: none;
+  appearance: none;
+  -webkit-appearance: none;
+  background: transparent;
+  border: 2px solid var(--line);
+  border-radius: 20px;
+  overflow: hidden;
+}
+
+/* Chrome, Edge, Safari: a variável --progresso vem do JS */
+#barraAudio::-webkit-slider-runnable-track {
+  height: 100%;
+  border-radius: 20px;
+  background:
+    linear-gradient(90deg, var(--accent2), var(--accent)) left / var(--progresso, 0%) 100% no-repeat,
+    var(--surface2);
+}
+
+#barraAudio::-webkit-slider-thumb {
+  appearance: none;
+  -webkit-appearance: none;
+  width: 0;
+  height: 0;
+}
+
+/* Firefox */
+#barraAudio::-moz-range-track {
+  height: 100%;
+  background: var(--surface2);
+}
+
+#barraAudio::-moz-range-progress {
+  height: 100%;
+  background: linear-gradient(90deg, var(--accent2), var(--accent));
+}
+
+#barraAudio::-moz-range-thumb {
+  width: 0;
+  height: 0;
+  border: 0;
+}
+
+/* escurece o que ainda não foi liberado (--liberado vem do JS) */
+.barra-bloqueada {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: var(--liberado, 20%);
+  right: 0;
+  background: rgba(20, 10, 6, 0.6);
+  border-radius: 0 20px 20px 0;
+  pointer-events: none;
+  transition: left 0.3s ease;
+}
+
+/* traços que separam as 5 etapas (a cada 20%) */
+.barra-divisorias {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: repeating-linear-gradient(
+    to right,
+    transparent 0,
+    transparent calc(20% - 2px),
+    rgba(246, 230, 216, 0.55) calc(20% - 2px),
+    rgba(246, 230, 216, 0.55) 20%
+  );
+}
+
+.informacoes-tempo {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+/* ---------- 6. As 5 tentativas ---------- */
+
+.lista-tentativas {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 0.5rem;
+}
+
+.lista-tentativas li {
+  padding: 0.4rem 0.5rem;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  text-align: center;
+  font-size: 0.9rem;
+  color: var(--muted);
+  background: var(--surface2);
+  border: 2px solid var(--line);
+  border-radius: 8px;
+}
+
+.lista-tentativas li.atual {
+  color: var(--text);
+  border-color: var(--accent);
+}
+
+.lista-tentativas li.erro {
+  color: var(--text);
+  background: var(--erro-fundo);
+  border-color: var(--red);
+}
+
+.lista-tentativas li.pulo {
+  font-style: italic;
+  opacity: 0.8;
+}
+
+.lista-tentativas li.acerto {
+  color: var(--text);
+  background: var(--ok-fundo);
+  border-color: var(--ok);
+}
+
+/* ---------- 7. Campo de resposta ---------- */
+
+.formulario-resposta {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  padding: 0.35rem 0.8rem;
+  background: var(--bg);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+}
+
+.formulario-resposta:focus-within {
+  border-color: var(--accent);
+  outline: 2px solid var(--accent);
+}
+
+.icone-pesquisa {
+  font-size: 1.8rem;
+  line-height: 1;
+  color: var(--accent2);
+}
+
+.formulario-resposta input {
+  flex: 1;
+  min-width: 0;
+  padding: 0.5rem 0;
+  font: inherit;
+  font-size: 1.1rem;
+  color: var(--text);
+  background: transparent;
+  border: 0;
+  outline: 0;
+}
+
+.formulario-resposta input::placeholder {
+  color: var(--muted);
+  opacity: 0.7;
+}
+
+.botao-responder {
+  padding: 0.55rem 1.1rem;
+  font-size: 0.95rem;
+  text-transform: uppercase;
+  cursor: pointer;
+  color: #1a0a03;
+  background: var(--accent);
+  border: 1px solid var(--accent);
+  border-radius: 4px;
+  transition: background 0.2s ease;
+}
+
+.botao-responder:hover:not(:disabled) {
+  background: var(--accent2);
+  border-color: var(--accent2);
+}
+
+/* "Pular": só contorno, para não competir com o "Adivinhar" */
+.botao-pular {
+  color: var(--accent2);
+  background: transparent;
+  border-color: var(--accent);
+}
+
+.botao-pular:hover:not(:disabled) {
+  color: #1a0a03;
+  background: var(--accent);
+  border-color: var(--accent);
+}
+
+.botao-responder:disabled,
+.botao-dica:disabled,
+.botao-play:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* ---------- 8. Mensagem e resultado ---------- */
+
+.mensagem-jogo {
+  padding: 0.6rem 0.9rem;
+  text-align: center;
+  color: var(--text);
+  background: var(--surface2);
+  border-left: 4px solid var(--accent2);
+  border-radius: 8px;
+}
+
+.resultado-jogo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 1.1rem;
+  text-align: center;
+  background: linear-gradient(135deg, var(--surface2), var(--surface));
+  border: 1px solid var(--accent);
+  border-radius: 8px;
+}
+
+.resultado-jogo h2 {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 1.6rem;
+}
+
+.resultado-jogo p {
+  margin: 0;
+  color: var(--muted);
+}
+
+#botaoProximaRodada {
+  padding: 0.7rem 1.6rem;
+  font-size: 1.05rem;
+  text-transform: uppercase;
+  cursor: pointer;
+  color: #1a0a03;
+  background: var(--accent);
+  border: 0;
+  border-radius: 4px;
+  transition: background 0.2s ease;
+}
+
+#botaoProximaRodada:hover {
+  background: var(--accent2);
+}
+
+/* ---------- 9. Telas menores ---------- */
+
+@media (max-width: 760px) {
+  .jogo-cabecalho {
+    grid-template-columns: 1fr;
+    justify-items: center;
+    text-align: center;
+  }
+
+  .capa-misterio {
+    width: min(60vw, 190px);
+    height: min(60vw, 190px);
+  }
+
+  .informacoes-misterio h2 {
+    border-left: 0;
+    padding-left: 0;
+  }
+
+  .informacoes-tempo {
+    flex-direction: column;
+    gap: 0;
+    text-align: center;
+  }
+}
+
+@media (max-width: 600px) {
+  .area-jogo {
+    padding: 1rem;
+  }
+
+  .marcadores-tempo {
+    font-size: 0.7rem;
+  }
+
+  .lista-tentativas {
+    gap: 0.3rem;
+  }
+
+  .lista-tentativas li {
+    padding: 0.3rem 0.2rem;
+    font-size: 0.7rem;
+  }
+
+  .formulario-resposta {
+    flex-wrap: wrap;
+    padding: 0.5rem 0.7rem;
+  }
+
+  .formulario-resposta input {
+    flex: 1 1 calc(100% - 3rem);
+  }
+
+  .botao-responder {
+    flex: 1;
+  }
+}

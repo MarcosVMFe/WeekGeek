@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Jogar – Rap Geek</title>
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="jogar.css">
+</head>
+<body>
+<header class="top">
+  <nav>
+    <a href="index.html#o-que-e">O que é</a>
+    <a href="index.html#caracteristicas">Características</a>
+    <a href="index.html#cantores">Cantores</a>
+    <a href="index.html#sugestao-sec">Sorteio</a>
+    <a href="jogar.html">Jogar</a>
+    <a href="index.html#faq">Dúvidas</a>
+  </nav>
+</header>
+
+<main class="pagina-jogar">
+
+  <!-- BANNER -->
+  <section class="banner-jogo">
+    <h1>Vamos jogar?</h1>
+    <p>Ouça um trecho curto e descubra a música. A cada erro, o trecho fica maior.</p>
+  </section>
+
+  <!-- ÁREA PRINCIPAL DO JOGO -->
+  <section class="area-jogo">
+
+    <!-- CAPA, ARTISTA E DICA -->
+    <div class="jogo-cabecalho">
+
+      <div class="capa-misterio" id="areaCapa">
+        <span id="interrogacaoCapa">?</span>
+        <img src="" alt="Capa do álbum" id="capaAlbum" hidden>
+      </div>
+
+      <div class="informacoes-misterio">
+        <h2>Artista: <span id="artistaRevelado">????</span></h2>
+        <p id="albumRevelado" hidden>Álbum: <span id="nomeAlbumRevelado"></span></p>
+      </div>
+
+      <button type="button" class="botao-dica" id="botaoDica">
+        <span class="icone-dica" id="iconeDica">💡</span>
+        <span id="textoBotaoDica">Pedir dica</span>
+      </button>
+
+    </div>
+
+    <!-- PLAYER -->
+    <div class="player-musica">
+      <div class="controles-player">
+
+        <button type="button" id="botaoPlay" class="botao-play" aria-label="Reproduzir música">▶</button>
+
+        <div class="linha-tempo">
+          <!-- cada rótulo fica no FIM da sua etapa; o JS acende os já liberados -->
+          <div class="marcadores-tempo" id="marcadoresTempo">
+            <span>0,5s</span>
+            <span>1s</span>
+            <span>5s</span>
+            <span>10s</span>
+            <span>15s</span>
+          </div>
+
+          <!-- a barra só MOSTRA o progresso (a pessoa não arrasta) -->
+          <div class="barra-wrapper" id="barraWrapper">
+            <input type="range" id="barraAudio" min="0" max="100" value="0" step="0.1" tabindex="-1"
+              aria-label="Progresso do trecho">
+            <div class="barra-bloqueada"></div>
+            <div class="barra-divisorias"></div>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="informacoes-tempo">
+        <span id="tempoDecorrido">Trecho liberado: 0,5s</span>
+        <span id="tempoRestante">Tentativa 1 de 5</span>
+      </div>
+
+      <audio id="audioMusica" preload="none"></audio>
+    </div>
+
+    <!-- AS 5 TENTATIVAS (o JS preenche) -->
+    <ol class="lista-tentativas" id="listaTentativas" aria-label="Tentativas"></ol>
+
+    <!-- CAMPO PARA ADIVINHAR -->
+    <form class="formulario-resposta" id="formResposta">
+      <span class="icone-pesquisa" aria-hidden="true">⌕</span>
+
+      <input type="text" id="respostaMusica" placeholder="Digite o nome da música..." autocomplete="off"
+        aria-label="Digite o nome da música">
+
+      <button type="button" id="botaoPular" class="botao-responder botao-pular">Pular</button>
+      <button type="submit" id="botaoAdivinhar" class="botao-responder">Adivinhar</button>
+    </form>
+
+    <!-- MENSAGEM DO JOGO -->
+    <div class="mensagem-jogo" id="mensagemJogo" aria-live="polite" hidden></div>
+
+    <!-- RESULTADO -->
+    <div class="resultado-jogo" id="resultadoJogo" hidden>
+      <h2 id="tituloResultado"></h2>
+      <p id="descricaoResultado"></p>
+      <button type="button" id="botaoProximaRodada">Próxima música</button>
+    </div>
+
+  </section>
+
+</main>
+
+<footer>Feito por fãs, para fãs. Site informativo sem fins lucrativos.</footer>
+
+<script src="api.js"></script>
+<script src="jogar.js"></script>
+</body>
+</html>
