@@ -1,4 +1,18 @@
-# WeekGeek
-Repositório visado para a atividade individual de P.I
+<div align="center">
 
-Site com intuito de introduzir a "Musica Geek" para aqueles que não conhecem e passar a minha visão para aqueles que já conhecem o tipo de conteúdo, passando sempre a minha opinião em relação ao assunto 
+<img src="" width="">
+
+![Status](https://img.shields.io/badge/status-em%20desenvolvimento-yellow)
+![SPTech](https://img.shields.io/badge/SPTech-1ADSA-red)
+
+</div>
+
+---
+
+## Sobre o projeto
+
+O **WeekGeek** é um projeto feito de fã para fã, focado na atual "cena geek", ele visa trazer visões objetivas sobre os artistas, além de apresentar cantores para aqueles que não estão inseridos no meio.
+
+
+
+---
