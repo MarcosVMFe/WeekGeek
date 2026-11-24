@@ -1,0 +1,154 @@
+
+.pagina-conta {
+  --ok: #4caf7a;
+}
+
+.area-conta {
+  display: flex;
+  justify-content: center;
+  padding: 3rem 0 2rem;
+}
+
+.card-conta {
+  width: 100%;
+  max-width: 460px;
+  padding: 2rem 1.6rem;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+}
+
+.card-conta h1 {
+  margin: 0 0 0.3rem;
+  font-size: clamp(2rem, 7vw, 2.8rem);
+  line-height: 1;
+  text-transform: uppercase;
+  background: linear-gradient(90deg, var(--accent2), var(--accent), var(--red));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.subtitulo {
+  margin: 0 0 1.4rem;
+  color: var(--muted);
+}
+
+/* ---------- campos ---------- */
+
+.campo {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  margin-bottom: 1rem;
+}
+
+.campo label {
+  font-family: Impact, "Arial Narrow Bold", Arial, sans-serif;
+  letter-spacing: 0.04em;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  color: var(--accent2);
+}
+
+.campo input {
+  width: 100%;
+  padding: 0.8rem 1rem;
+  font: inherit;
+  font-size: 1.05rem;
+  color: var(--text);
+  background: var(--bg);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+}
+
+.campo input::placeholder {
+  color: var(--muted);
+  opacity: 0.7;
+}
+
+.campo input:focus {
+  outline: 2px solid var(--accent);
+  border-color: var(--accent);
+}
+
+.card-conta .btn {
+  width: 100%;
+  margin-top: 0.4rem;
+}
+
+.card-conta .btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.troca-conta {
+  margin: 1.2rem 0 0;
+  text-align: center;
+  color: var(--muted);
+}
+
+
+
+.card_erro {
+  display: none;                       
+  margin-bottom: 1rem;
+  padding: 0.7rem 0.9rem;
+  color: var(--text);
+  background: var(--surface2);
+  border-left: 4px solid var(--red);
+  border-radius: 8px;
+}
+
+.card_erro.sucesso {
+  border-left-color: var(--ok);
+}
+
+/* ---------- "aguarde" (usado pelo sessao.js: div_aguardar) ---------- */
+
+.loading-div {
+  display: none;                       /* o sessao.js liga e desliga */
+  align-items: center;
+  justify-content: center;
+  gap: 0.7rem;
+  margin-top: 1rem;
+  color: var(--muted);
+}
+
+.spinner {
+  width: 1.4rem;
+  height: 1.4rem;
+  border: 3px solid var(--line);
+  border-top-color: var(--accent);
+  border-radius: 50%;
+  animation: girar 0.8s linear infinite;
+}
+
+@keyframes girar {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .spinner {
+    animation-duration: 3s;
+  }
+}
+
+/* ---------- erros em texto (usado pelo sessao.js: div_erros_login) ---------- */
+
+.erros-login {
+  display: none;
+  margin-top: 1rem;
+  padding: 0.7rem 0.9rem;
+  background: var(--surface2);
+  border-left: 4px solid var(--red);
+  border-radius: 8px;
+}
+
+@media (max-width: 600px) {
+  .card-conta {
+    padding: 1.4rem 1rem;
+  }
+}

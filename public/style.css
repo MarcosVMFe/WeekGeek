@@ -405,3 +405,18 @@ footer {
   font-size: 0.8rem;
   margin-top: 0.1rem;
 }
+
+/* menu: links de conta e página atual */
+nav a.nav-conta {
+  color: var(--accent2);
+  padding: 0 0.7rem;
+  border: 1px solid var(--accent);
+  border-radius: 4px;
+}
+nav a.nav-conta:hover {
+  color: #1a0a03;
+  background: var(--accent);
+}
+nav a[aria-current="page"] {
+  color: var(--accent2);
+}

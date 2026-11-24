@@ -1,158 +1,141 @@
 <!DOCTYPE html>
-<html lang="pt-br">
-
+<html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>AquaTech | Login</title>
-
-    <script src="./js/sessao.js"></script>
-
-    <link rel="stylesheet" href="./css/estilo.css">
-    <link rel="icon" href="./assets/icon/favicon2.ico">
-    <link rel="preconnect" href="https://fonts.gstatic.com">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Entrar – Rap Geek</title>
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="conta.css">
+<script src="./js/sessao.js"></script>
 </head>
-
 <body>
+<header class="top">
+  <nav>
+    <a href="index.html#o-que-e">O que é</a>
+    <a href="index.html#caracteristicas">Características</a>
+    <a href="index.html#cantores">Cantores</a>
+    <a href="index.html#sugestao-sec">Sorteio</a>
+    <a href="jogar.html">Jogar</a>
+    <a href="index.html#faq">Dúvidas</a>
+    <a class="nav-conta" href="login.html" aria-current="page">Entrar</a>
+    <a class="nav-conta" href="cadastro.html">Cadastre-se</a>
+  </nav>
+</header>
 
-    <!--Header-->
+<main class="pagina-conta">
+  <section class="area-conta">
+    <div class="card-conta">
+      <h1>Olá de volta!</h1>
+      <p class="subtitulo">Entre para continuar no Rap Geek.</p>
 
-    <div class="header">
-        <div class="container">
-            <h1 class="titulo">AquaTech</h1>
-            <ul class="navbar">
-                <li>
-                    <a href="index.html">Inicial</a>
-                </li>
-                <li>
-                    <a href="simulador.html">Simulador</a>
-                </li>
-                <li>|</li>
-                <li class="agora">
-                    <a href="#">Login</a>
-                </li>
-                <li>
-                    <a href="cadastro.html">Cadastro</a>
-                </li>
-            </ul>
+      <div class="card_erro" id="cardErro" role="alert">
+        <span id="mensagem_erro"></span>
+      </div>
+
+      <form class="formulario" onsubmit="return entrar()" novalidate>
+        <div class="campo">
+          <label for="email_input">E-mail</label>
+          <input id="email_input" type="email" placeholder="meuemail@gmail.com" autocomplete="username">
         </div>
+        <div class="campo">
+          <label for="senha_input">Senha</label>
+          <input id="senha_input" type="password" placeholder="******" autocomplete="current-password">
+        </div>
+        <button class="btn" type="submit" id="botao_entrar">Entrar</button>
+      </form>
+
+      <div id="div_aguardar" class="loading-div">
+        <span class="spinner" aria-hidden="true"></span> Aguarde...
+      </div>
+      <div id="div_erros_login" class="erros-login"></div>
+
+      <p class="troca-conta">Ainda não tem conta? <a href="cadastro.html">Cadastre-se</a></p>
     </div>
+  </section>
+</main>
 
-
-    <div class="login">
-        <div class="alerta_erro">
-            <div class="card_erro" id="cardErro">
-                <span id="mensagem_erro"></span>
-            </div>
-        </div>
-        <div class="container">
-            <div class="card card-login">
-                <h2>Olá de volta!</h2>
-                <div class="formulario">
-                    <div class="campo">
-                        <span>E-mail:</span>
-                        <input id="email_input" type="text" placeholder="Login">
-                    </div>
-                    <div class="campo">
-                        <span>Senha:</span>
-                        <input id="senha_input" type="password" placeholder="******">
-                    </div>
-                    <button class="botao" onclick="entrar()">Entrar</button>
-                </div>
-
-                <div id="div_aguardar" class="loading-div">
-                    <img src="./assets/circle-loading.gif" id="loading-gif">
-                </div>
-
-                <div id="div_erros_login"></div>
-            </div>
-        </div>
-    </div>
-
-    <!--footer inicio-->
-    <div class="footer">
-        <div class="container">
-            <h4>Feito com amor por aluno &hearts; SPTech &copy; 2023-2026</h4>
-        </div>
-    </div>
-    <!--footer fim-->
-
-</body>
-
-</html>
+<footer>Feito por fãs, para fãs. Site informativo sem fins lucrativos.</footer>
 
 <script>
+  var temporizadorMensagem;
+  var enviando = false;
 
+  function mostrarMensagem(texto, sucesso) {
+    cardErro.style.display = "block";
+    cardErro.classList.toggle("sucesso", !!sucesso);
+    mensagem_erro.textContent = texto;
 
-    function entrar() {
-        aguardar();
+    clearTimeout(temporizadorMensagem);
+    temporizadorMensagem = setTimeout(sumirMensagem, 5000);
+  }
 
-        var emailVar = email_input.value;
-        var senhaVar = senha_input.value;
+  function sumirMensagem() {
+    cardErro.style.display = "none";
+  }
 
-        if (emailVar == "" || senhaVar == "") {
-            cardErro.style.display = "block"
-            mensagem_erro.innerHTML = "(Mensagem de erro para todos os campos em branco)";
-            finalizarAguardar();
-            return false;
-        }
-        else {
-            setInterval(sumirMensagem, 5000)
-        }
+  function entrar() {
+    if (enviando) return false;
 
-        console.log("FORM LOGIN: ", emailVar);
-        console.log("FORM SENHA: ", senhaVar);
+    var emailVar = email_input.value.trim();
+    var senhaVar = senha_input.value;
 
-        fetch("/usuarios/autenticar", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify({
-                emailServer: emailVar,
-                senhaServer: senhaVar
-            })
-        }).then(function (resposta) {
-            console.log("ESTOU NO THEN DO entrar()!")
-
-            if (resposta.ok) {
-                console.log(resposta);
-
-                resposta.json().then(json => {
-                    console.log(json);
-                    console.log(JSON.stringify(json));
-                    sessionStorage.EMAIL_USUARIO = json.email;
-                    sessionStorage.NOME_USUARIO = json.nome;
-                    sessionStorage.ID_USUARIO = json.id;
-                    sessionStorage.AQUARIOS = JSON.stringify(json.aquarios)
-
-                    setTimeout(function () {
-                        window.location = "./dashboard/cards.html";
-                    }, 1000); // apenas para exibir o loading
-
-                });
-
-            } else {
-
-                console.log("Houve um erro ao tentar realizar o login!");
-
-                resposta.text().then(texto => {
-                    console.error(texto);
-                    finalizarAguardar(texto);
-                });
-            }
-
-        }).catch(function (erro) {
-            console.log(erro);
-        })
-
-        return false;
+    if (emailVar == "" || senhaVar == "") {
+      mostrarMensagem("Preencha o e-mail e a senha.");
+      return false;
     }
 
-    function sumirMensagem() {
-        cardErro.style.display = "none"
-    }
+    enviando = true;
+    botao_entrar.disabled = true;
+    aguardar();
 
+    fetch("/usuarios/autenticar", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        emailServer: emailVar,
+        senhaServer: senhaVar
+      })
+    })
+      .then(function (resposta) {
+        if (resposta.ok) {
+          return resposta.json().then(function (json) {
+            // guarda quem entrou (o sessao.js lê estes dados)
+            sessionStorage.EMAIL_USUARIO = json.email;
+            sessionStorage.NOME_USUARIO = json.nome;
+            sessionStorage.ID_USUARIO = json.id;
+
+            mostrarMensagem("Login realizado! Redirecionando...", true);
+
+            setTimeout(function () {
+              window.location = "index.html";
+            }, 1000);
+          });
+        }
+
+        return resposta.text().then(function (texto) {
+          console.error(texto);
+          throw resposta.status;
+        });
+      })
+      .catch(function (erro) {
+        console.log("#ERRO:", erro);
+
+        if (erro === 401 || erro === 403) {
+          mostrarMensagem("E-mail ou senha inválidos.");
+        } else {
+          mostrarMensagem("Não foi possível entrar agora. Tente novamente em instantes.");
+        }
+      })
+      .finally(function () {
+        enviando = false;
+        botao_entrar.disabled = false;
+        finalizarAguardar();
+      });
+
+    return false;
+  }
 </script>
+</body>
+</html>
