@@ -2,7 +2,6 @@
    RAP GEEK | api.js
    Função que o jogo usa para falar com o servidor (rotas /jogo/...).
    Devolve sempre { ok, dados, erro }; nunca lança exceção.
-   Se você já tem o js/global.js do V-Side com a VSide.chamarApi, pode usar ele no lugar.
 ========================================= */
 
 (function () {

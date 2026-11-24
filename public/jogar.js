@@ -1,5 +1,5 @@
 /* =========================================
-   V-SIDE | jogar.js
+| jogar.js
    Jogo estilo ouça um trecho curto e adivinhe a música.
    Etapas: 0,5s -> 1s -> 5s -> 10s -> 15s (cada erro ou "Pular" libera a próxima).
    O servidor guarda a resposta; aqui só tocamos o áudio e mostramos a tela.
