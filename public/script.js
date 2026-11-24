@@ -94,7 +94,7 @@ const cantores = [
     descricao: "o proprio shamas",
     musicas: [],
     itunesId: "",
-    tag: "Pop · Bossa Nova",
+    tag: "Pop · MPB",
     estilo:
     "Traz musicas com maior foco em instrumental e uma voz limpa, sempre trazendo consigo um pouco de uma raiz brasileira em suas musicas.",
   },
