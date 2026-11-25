@@ -4,11 +4,11 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Cadastro – Rap Geek</title>
-<link rel="stylesheet" href="style.css">
-<link rel="stylesheet" href="conta.css">
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/conta.css">
 <script src="./js/sessao.js"></script>
 </head>
-<body onload="listar()">
+<body>
 <header class="top">
   <nav>
     <a href="index.html#o-que-e">O que é</a>
@@ -139,12 +139,16 @@
 
           limparCampos();
         } else {
-          throw "Houve um erro ao tentar realizar o cadastro! (status " + resposta.status + ")";
+          throw resposta.status;
         }
       })
       .catch(function (erro) {
         console.log("#ERRO: " + erro);
-        mostrarMensagem("Não foi possível concluir o cadastro. Verifique os dados e tente novamente.");
+        if (erro === 409) {
+          mostrarMensagem("Este e-mail já está cadastrado. Tente entrar.");
+        } else {
+          mostrarMensagem("Não foi possível concluir o cadastro. Verifique os dados e tente novamente.");
+        }
       })
       .finally(function () {
         enviando = false;

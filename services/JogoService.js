@@ -1,4 +1,3 @@
-
 var artistas = [
     "Novatroop", " Chrono Rapper", "M4rkim", "Anny", "HalaCG",
     "Blxck", "Anirap", "7 Minutoz", "MHRAP", "oShaman", "Slow GM",

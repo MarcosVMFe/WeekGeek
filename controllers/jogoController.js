@@ -1,4 +1,4 @@
-var jogoService = require("./services/jogoService");
+var jogoService = require("../services/jogoService");
 
 // Quantas tentativas a pessoa tem (uma por etapa: 0,5s / 1s / 5s / 10s / 15s)
 var MAX_TENTATIVAS = 5;

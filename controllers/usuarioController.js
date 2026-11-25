@@ -1,36 +1,28 @@
 var usuarioModel = require("../models/usuarioModel");
-var aquarioModel = require("../models/aquarioModel");
 
 function autenticar(req, res) {
-    var email = req.body.emailServer;
-    var senha = req.body.senhaServer;
+    var corpo = req.body || {};
+    var email = corpo.emailServer;
+    var senha = corpo.senhaServer;
 
-    if (email == undefined) {
+    if (typeof email != "string" || email.trim() == "") {
         res.status(400).send("Seu email está undefined!");
-    } else if (senha == undefined) {
+    } else if (typeof senha != "string" || senha == "") {
         res.status(400).send("Sua senha está indefinida!");
     } else {
 
-        usuarioModel.autenticar(email, senha)
+        usuarioModel.autenticar(email.trim(), senha)
             .then(
                 function (resultadoAutenticar) {
-                    console.log(`\nResultados encontrados: ${resultadoAutenticar.length}`);
-                    console.log(`Resultados: ${JSON.stringify(resultadoAutenticar)}`); // transforma JSON em String
+                    console.log("Resultados encontrados: " + resultadoAutenticar.length);
 
                     if (resultadoAutenticar.length == 1) {
-                        console.log(resultadoAutenticar);
-
-                        aquarioModel.buscarAquariosPorEmpresa(resultadoAutenticar[0].empresaId)
-                            .then((resultadoAquarios) => {
-                                if (resultadoAquarios.length > 0) {
-                                    res.json({
-                                        id: resultadoAutenticar[0].id,
-                                        email: resultadoAutenticar[0].email,
-                                        nome: resultadoAutenticar[0].nome,
-                                        senha: resultadoAutenticar[0].senha,
-                                    });
-                                } 
-                            })
+                        // devolve só o necessário (nunca a senha)
+                        res.json({
+                            id: resultadoAutenticar[0].id,
+                            email: resultadoAutenticar[0].email,
+                            nome: resultadoAutenticar[0].nome
+                        });
                     } else if (resultadoAutenticar.length == 0) {
                         res.status(403).send("Email e/ou senha inválido(s)");
                     } else {
@@ -39,44 +31,43 @@ function autenticar(req, res) {
                 }
             ).catch(
                 function (erro) {
-                    console.log(erro);
-                    console.log("\nHouve um erro ao realizar o login! Erro: ", erro.sqlMessage);
-                    res.status(500).json(erro.sqlMessage);
+                    console.log("\nHouve um erro ao realizar o login! Erro: ", erro.sqlMessage || erro);
+                    res.status(500).json("Erro ao realizar o login.");
                 }
             );
     }
-
 }
 
 function cadastrar(req, res) {
-    // Crie uma variável que vá recuperar os valores do arquivo cadastro.html
-    var nome = req.body.nomeServer;
-    var email = req.body.emailServer;
-    var senha = req.body.senhaServer;
+    var corpo = req.body || {};
+    var nome = corpo.nomeServer;
+    var email = corpo.emailServer;
+    var senha = corpo.senhaServer;
 
-    // Faça as validações dos valores
-    if (nome == undefined) {
+    if (typeof nome != "string" || nome.trim() == "") {
         res.status(400).send("Seu nome está undefined!");
-    } else if (email == undefined) {
+    } else if (typeof email != "string" || email.trim() == "") {
         res.status(400).send("Seu email está undefined!");
-    } else if (senha == undefined) {
+    } else if (typeof senha != "string" || senha == "") {
         res.status(400).send("Sua senha está undefined!");
-    }  else {
+    } else if (nome.trim().length > 100 || email.trim().length > 120 || senha.length > 255) {
+        res.status(400).send("Algum campo passou do tamanho permitido.");
+    } else {
 
-        // Passe os valores como parâmetro e vá para o arquivo usuarioModel.js
-        usuarioModel.cadastrar(nome, email, senha)
+        usuarioModel.cadastrar(nome.trim(), email.trim(), senha)
             .then(
                 function (resultado) {
                     res.json(resultado);
                 }
             ).catch(
                 function (erro) {
-                    console.log(erro);
-                    console.log(
-                        "\nHouve um erro ao realizar o cadastro! Erro: ",
-                        erro.sqlMessage
-                    );
-                    res.status(500).json(erro.sqlMessage);
+                    console.log("\nHouve um erro ao realizar o cadastro! Erro: ", erro.sqlMessage || erro);
+
+                    if (erro.code == "ER_DUP_ENTRY") {
+                        res.status(409).json("Este e-mail já está cadastrado.");
+                    } else {
+                        res.status(500).json("Erro ao realizar o cadastro.");
+                    }
                 }
             );
     }
@@ -85,4 +76,4 @@ function cadastrar(req, res) {
 module.exports = {
     autenticar,
     cadastrar
-}
+};
