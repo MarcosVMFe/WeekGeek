@@ -1,9 +1,3 @@
-/* =========================================
-   RAP GEEK | api.js
-   Função que o jogo usa para falar com o servidor (rotas /jogo/...).
-   Devolve sempre { ok, dados, erro }; nunca lança exceção.
-========================================= */
-
 (function () {
     'use strict';
 
@@ -20,11 +14,11 @@
             } catch (e) { /* resposta sem corpo JSON */ }
 
             if (!resposta.ok) {
-                return { ok: false, erro: (dados && dados.erro) || 'Algo deu errado. Tente de novo.' };
+                return { ok: false, status: resposta.status, erro: (dados && dados.erro) || 'Algo deu errado. Tente de novo.' };
             }
-            return { ok: true, dados: dados };
+            return { ok: true, status: resposta.status, dados: dados };
         } catch (e) {
-            return { ok: false, erro: 'Não foi possível falar com o servidor. Verifique sua conexão.' };
+            return { ok: false, status: 0, erro: 'Não foi possível falar com o servidor. Verifique sua conexão.' };
         }
     }
 

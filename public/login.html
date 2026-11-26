@@ -56,6 +56,9 @@
 
 <footer>Feito por fãs, para fãs. Site informativo sem fins lucrativos.</footer>
 
+<script src="js/api.js"></script>
+<script src="js/menu.js"></script>
+
 <script>
   var temporizadorMensagem;
   var enviando = false;
@@ -101,7 +104,6 @@
       .then(function (resposta) {
         if (resposta.ok) {
           return resposta.json().then(function (json) {
-            // guarda quem entrou (o sessao.js lê estes dados)
             sessionStorage.EMAIL_USUARIO = json.email;
             sessionStorage.NOME_USUARIO = json.nome;
             sessionStorage.ID_USUARIO = json.id;

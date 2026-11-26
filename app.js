@@ -1,9 +1,6 @@
-// var ambiente_processo = 'producao';
 var ambiente_processo = 'desenvolvimento';
 
 var caminho_env = ambiente_processo === 'producao' ? '.env' : '.env.dev';
-// Acima, temos o uso do operador ternário para definir o caminho do arquivo .env
-// A sintaxe do operador ternário é: condição ? valor_se_verdadeiro : valor_se_falso
 
 require("dotenv").config({ path: caminho_env });
 
@@ -18,12 +15,13 @@ var app = express();
 
 var usuarioRouter = require("./routes/usuarios");
 var jogoRouter = require("./routes/jogo");
+var rankingRouter = require("./routes/ranking");
+var dashboardRouter = require("./routes/dashboard");
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cors());
 
-// Sessão: guarda a rodada do jogo de cada pessoa no servidor (req.session.jogo)
 app.use(session({
     secret: process.env.SESSION_SECRET || "weekgeek-troque-este-segredo",
     resave: false,
@@ -31,11 +29,12 @@ app.use(session({
     cookie: { httpOnly: true, sameSite: "lax", maxAge: 2 * 60 * 60 * 1000 } // 2 horas
 }));
 
-// O site (HTML, CSS, JS e imagens) fica SÓ na pasta public
 app.use(express.static(path.join(__dirname, "public")));
 
 app.use("/usuarios", usuarioRouter);
 app.use("/jogo", jogoRouter);
+app.use("/ranking", rankingRouter);
+app.use("/dashboard", dashboardRouter);
 
 app.listen(PORTA_APP, function () {
     console.log(`

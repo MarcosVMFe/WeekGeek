@@ -23,16 +23,13 @@
 
 <main class="pagina-jogar">
 
-  <!-- BANNER -->
   <section class="banner-jogo">
     <h1>Vamos jogar?</h1>
     <p>Ouça um trecho curto e descubra a música. A cada erro, o trecho fica maior.</p>
   </section>
 
-  <!-- ÁREA PRINCIPAL DO JOGO -->
   <section class="area-jogo">
 
-    <!-- CAPA, ARTISTA E DICA -->
     <div class="jogo-cabecalho">
 
       <div class="capa-misterio" id="areaCapa">
@@ -52,14 +49,12 @@
 
     </div>
 
-    <!-- PLAYER -->
     <div class="player-musica">
       <div class="controles-player">
 
         <button type="button" id="botaoPlay" class="botao-play" aria-label="Reproduzir música">▶</button>
 
         <div class="linha-tempo">
-          <!-- cada rótulo fica no FIM da sua etapa; o JS acende os já liberados -->
           <div class="marcadores-tempo" id="marcadoresTempo">
             <span>0,5s</span>
             <span>1s</span>
@@ -68,7 +63,6 @@
             <span>15s</span>
           </div>
 
-          <!-- a barra só MOSTRA o progresso (a pessoa não arrasta) -->
           <div class="barra-wrapper" id="barraWrapper">
             <input type="range" id="barraAudio" min="0" max="100" value="0" step="0.1" tabindex="-1"
               aria-label="Progresso do trecho">
@@ -87,10 +81,8 @@
       <audio id="audioMusica" preload="none"></audio>
     </div>
 
-    <!-- AS 5 TENTATIVAS (o JS preenche) -->
     <ol class="lista-tentativas" id="listaTentativas" aria-label="Tentativas"></ol>
 
-    <!-- CAMPO PARA ADIVINHAR -->
     <form class="formulario-resposta" id="formResposta">
       <span class="icone-pesquisa" aria-hidden="true">⌕</span>
 
@@ -101,10 +93,8 @@
       <button type="submit" id="botaoAdivinhar" class="botao-responder">Adivinhar</button>
     </form>
 
-    <!-- MENSAGEM DO JOGO -->
     <div class="mensagem-jogo" id="mensagemJogo" aria-live="polite" hidden></div>
 
-    <!-- RESULTADO -->
     <div class="resultado-jogo" id="resultadoJogo" hidden>
       <h2 id="tituloResultado"></h2>
       <p id="descricaoResultado"></p>
@@ -118,6 +108,7 @@
 <footer>Feito por fãs, para fãs. Site informativo sem fins lucrativos.</footer>
 
 <script src="js/api.js"></script>
+<script src="js/menu.js"></script>
 <script src="js/jogar.js"></script>
 </body>
 </html>

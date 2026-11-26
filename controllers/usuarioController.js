@@ -17,7 +17,8 @@ function autenticar(req, res) {
                     console.log("Resultados encontrados: " + resultadoAutenticar.length);
 
                     if (resultadoAutenticar.length == 1) {
-                        // devolve só o necessário (nunca a senha)
+                        req.session.usuarioId = resultadoAutenticar[0].id;
+
                         res.json({
                             id: resultadoAutenticar[0].id,
                             email: resultadoAutenticar[0].email,
@@ -73,7 +74,14 @@ function cadastrar(req, res) {
     }
 }
 
+function sair(req, res) {
+    req.session.destroy(function () {
+        res.json({ ok: true });
+    });
+}
+
 module.exports = {
     autenticar,
-    cadastrar
+    cadastrar,
+    sair
 };

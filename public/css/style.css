@@ -406,7 +406,6 @@ footer {
   margin-top: 0.1rem;
 }
 
-/* menu: links de conta e página atual */
 nav a.nav-conta {
   color: var(--accent2);
   padding: 0 0.7rem;
@@ -419,4 +418,82 @@ nav a.nav-conta:hover {
 }
 nav a[aria-current="page"] {
   color: var(--accent2);
+}
+
+.busca-musica {
+  display: flex;
+  gap: 0.6rem;
+  margin-bottom: 0.9rem;
+}
+.busca-musica input {
+  flex: 1;
+  min-width: 0;
+  padding: 0.7rem 0.9rem;
+  font: inherit;
+  font-size: 1rem;
+  color: var(--text);
+  background: var(--bg);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+}
+.busca-musica input:focus {
+  outline: 2px solid var(--accent);
+  border-color: var(--accent);
+}
+.busca-musica .btn {
+  margin-top: 0;
+}
+.resultados {
+  list-style: none;
+  margin: 0 0 1rem;
+  padding: 0;
+}
+.item-resultado {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  padding: 0.5rem 0.8rem;
+  margin-bottom: 0.4rem;
+  background: var(--surface);
+  border: 1px dashed var(--line);
+  border-radius: 8px;
+}
+.album {
+  display: block;
+  font-size: 0.8rem;
+  color: var(--muted);
+}
+.mover .btn-add {
+  width: auto;
+  height: auto;
+  padding: 0.4rem 0.8rem;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  color: #1a0a03;
+  background: var(--accent);
+  border: 0;
+  white-space: nowrap;
+}
+.mover .btn-add:disabled {
+  background: var(--surface2);
+  color: var(--muted);
+  opacity: 1;
+}
+.mover .remover:hover:not(:disabled) {
+  color: #fff;
+  background: var(--red);
+  border-color: var(--red);
+}
+.card h4.titulo-ranking {
+  margin: 1.2rem 0 0.6rem;
+}
+@media (max-width: 600px) {
+  .item-resultado,
+  .item-rank {
+    flex-wrap: wrap;
+  }
+  .item-resultado .mover,
+  .item-rank .mover {
+    margin-left: auto;
+  }
 }

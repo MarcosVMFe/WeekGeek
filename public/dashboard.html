@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Meu dashboard – Rap Geek</title>
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/dashboard.css">
+</head>
+<body>
+<header class="top">
+  <nav>
+    <a href="index.html#o-que-e">O que é</a>
+    <a href="index.html#caracteristicas">Características</a>
+    <a href="index.html#cantores">Cantores</a>
+    <a href="index.html#sugestao-sec">Sorteio</a>
+    <a href="jogar.html">Jogar</a>
+    <a href="index.html#faq">Dúvidas</a>
+    <a class="nav-conta" href="login.html">Entrar</a>
+    <a class="nav-conta" href="cadastro.html">Cadastre-se</a>
+  </nav>
+</header>
+
+<main class="pagina-dashboard">
+
+  <!-- BANNER -->
+  <section class="banner-dash">
+    <h1>Meu dashboard</h1>
+    <p id="subtitulo-dash">As músicas que você adicionou aos seus rankings nos últimos 7 dias.</p>
+  </section>
+
+  <!-- ESTADOS: só um aparece por vez (o JS decide) -->
+  <div class="card aviso-dash" id="estado-carregando">
+    <p>Carregando o seu dashboard…</p>
+  </div>
+
+  <div class="card aviso-dash" id="estado-login" hidden>
+    <h3>Entre para ver o seu dashboard</h3>
+    <p>O dashboard mostra as músicas que você adicionou ao seu ranking, e é só seu.</p>
+    <div class="acoes">
+      <a class="btn" href="login.html">Entrar</a>
+      <a class="btn btn-sec" href="cadastro.html">Cadastre-se</a>
+    </div>
+  </div>
+
+  <div class="card aviso-dash" id="estado-erro" hidden>
+    <h3>Ops!</h3>
+    <p id="texto-erro">Não foi possível carregar o dashboard.</p>
+    <div class="acoes"><a class="btn" href="dashboard.html">Tentar de novo</a></div>
+  </div>
+
+  <div class="card aviso-dash" id="estado-vazio" hidden>
+    <h3>Nada por aqui ainda</h3>
+    <p>Você não adicionou nenhuma música ao ranking nos últimos 7 dias.</p>
+    <div class="acoes"><a class="btn" href="index.html#cantores">Escolher um cantor</a></div>
+  </div>
+
+  <div id="conteudo-dash" hidden>
+
+    <div class="kpis">
+      <div class="kpi">
+        <div class="rotulo">Adicionadas na semana</div>
+        <div class="valor" id="kpiTotal">0</div>
+        <div class="detalhe-kpi" id="kpiPeriodo"></div>
+      </div>
+      <div class="kpi">
+        <div class="rotulo">Cantor mais adicionado</div>
+        <div class="valor" id="kpiArtista">–</div>
+        <div class="detalhe-kpi" id="kpiArtistaTotal"></div>
+      </div>
+      <div class="kpi">
+        <div class="rotulo">Melhor dia</div>
+        <div class="valor" id="kpiDia">–</div>
+        <div class="detalhe-kpi" id="kpiDiaTotal"></div>
+      </div>
+      <div class="kpi">
+        <div class="rotulo">Total nos seus rankings</div>
+        <div class="valor" id="kpiRanking">0</div>
+        <div class="detalhe-kpi">somando todos os cantores</div>
+      </div>
+    </div>
+
+    <div class="graficos">
+      <div class="card">
+        <h3>Adições por dia</h3>
+        <div class="grafico"><canvas id="graficoDias" aria-label="Gráfico de barras: músicas adicionadas por dia" role="img"></canvas></div>
+      </div>
+      <div class="card">
+        <h3>Por cantor</h3>
+        <div class="grafico"><canvas id="graficoArtistas" aria-label="Gráfico de rosca: músicas adicionadas por cantor" role="img"></canvas></div>
+      </div>
+    </div>
+    <p class="aviso-grafico" id="avisoGrafico" hidden>Não foi possível carregar a biblioteca dos gráficos (Chart.js). Verifique a sua conexão com a internet e atualize a página.</p>
+
+    <div class="card recentes-card">
+      <h3>Últimas adicionadas</h3>
+      <ul class="recentes" id="listaRecentes"></ul>
+    </div>
+
+  </div>
+
+</main>
+
+<footer>Feito por fãs, para fãs. Site informativo sem fins lucrativos.</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7"></script>
+<script src="js/api.js"></script>
+<script src="js/menu.js"></script>
+<script src="js/dashboard.js"></script>
+</body>
+</html>
